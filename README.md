@@ -1,3 +1,4 @@
+## Conan package for slideio library
 ### to create Debug package (from the package directory):
 ```
 conan create . slideio/stable -s build_type=Release
