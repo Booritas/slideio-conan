@@ -28,7 +28,7 @@ class Slideio(ConanFile):
         build_type = str(self.settings.build_type)
         install_folder = os.path.join("install", os_name)
         print(f"install_folder: {install_folder}")
-        self.copy(pattern="*.hpp", dst="slideio", src=os.path.join(install_folder,"slideio"))
+        self.copy(pattern="*.hpp", dst="include", src=os.path.join(install_folder,"include"))
         lib_pattern = "*.lib"
         if self.settings.os == "Linux":
             lib_pattern = "*.so*"
@@ -39,6 +39,6 @@ class Slideio(ConanFile):
         self.copy(pattern=bin_pattern, dst="bin", src=os.path.join(install_folder, "bin"))
 
     def package_info(self):
-        self.cpp_info.includedirs = ["slideio"]
+        self.cpp_info.includedirs = ["include"]
         self.cpp_info.libdirs = ["lib"]
         self.cpp_info.bindirs = ["bin"]
