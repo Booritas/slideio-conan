@@ -42,3 +42,7 @@ class Slideio(ConanFile):
         self.cpp_info.includedirs = ["include"]
         self.cpp_info.libdirs = ["lib"]
         self.cpp_info.bindirs = ["bin"]
+        if self.settings.build_type == 'Debug':
+            self.cpp_info.libs = ["slideio_d.lib","slideio-converter_d.lib","slideio-transformer_d.lib", "slideio-core_d.lib"]
+        else:
+            self.cpp_info.libs = ["slideio.lib","slideio-converter.lib","slideio-transformer.lib", "slideio-core.lib"]
