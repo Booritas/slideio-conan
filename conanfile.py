@@ -21,7 +21,10 @@ class Slideio(ConanFile):
         configuration = 'release'
         if self.settings.build_type == 'Debug':
             configuration = 'debug'
-        self.run(f"python3 install.py -a install -c {configuration}")
+        python = "python3"
+        if self.settings.os == "Windows":
+            python = "python"
+        self.run(f"{python} install.py -a install -c {configuration}")
 
     def package(self):
         os_name = str(self.settings.os)
